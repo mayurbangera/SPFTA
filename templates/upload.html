@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Bank Statement | SPFTA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="upload-page">
+    <div class="upload-container">
+        <h2>📂 Upload Your Bank Statement</h2>
+        <p class="subtext">Only .xlsx files supported (Exported Excel statement)</p>
+
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <button type="submit">📊 Analyze Now</button>
+        </form>
+
+        <a href="/logout" class="logout-link">Logout</a>
+    </div>
+</body>
+</html>

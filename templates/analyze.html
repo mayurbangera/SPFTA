@@ -1,0 +1,76 @@
+<!-- templates/analyze.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SPFTA | Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 40px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h2, h3 {
+            color: #2c3e50;
+        }
+        .charts {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        img {
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .back-link {
+            margin-top: 30px;
+            display: inline-block;
+            font-size: 16px;
+            color: green;
+        }
+        .table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+        }
+        .table th, .table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        .table th {
+            background-color: #eaeaea;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>📊 Analyzed Bank Statement</h2>
+    <div>
+        {{ table_html | safe }}
+    </div>
+
+    <div class="charts">
+        <div>
+            <h3>🥧 Spending Breakdown (Pie)</h3>
+            <img src="{{ url_for('static', filename=pie_chart.split('static/')[-1]) }}" width="350">
+        </div>
+        <div>
+            <h3>📊 Spending by Category (Bar)</h3>
+            <img src="{{ url_for('static', filename=bar_chart.split('static/')[-1]) }}" width="400">
+            <h3>💳 Spending by Payment Mode:</h3>
+            <img src="{{ url_for('static', filename=payment_chart.split('static/')[-1]) }}" width="500">
+
+
+        </div>
+    </div>
+
+    <br><br>
+    <a href="/download_report" class="back-link">📥 Download PDF Report</a> <br>
+    <a href="/dashboard" class="back-link">← Back to Dashboard</a>
+
+</body>
+</html>

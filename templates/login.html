@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login | SPFTA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <h2>🔐 Welcome Back to SPFTA</h2>
+        <form method="POST">
+            <input type="email" name="email" placeholder="📧 Email" required>
+            <input type="password" name="password" placeholder="🔒 Password" required>
+            <button type="submit">Login</button>
+            <p>Don’t have an account? <a href="/register">Register</a></p>
+        </form>
+    </div>
+</body>
+</html>

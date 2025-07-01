@@ -1,0 +1,13 @@
+How to run SPFTA project
+
+
+1. Open VS Code
+2. Go to file
+3. Click open folder
+4. Click desktop -> SPFTA
+5. In terminal copy past the below text
+
+C:\Users\91886\AppData\Roaming\Python\Python310\Scripts\flask.exe run
+
+
+
