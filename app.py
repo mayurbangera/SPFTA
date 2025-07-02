@@ -2,6 +2,9 @@ from flask import Flask, render_template, request, redirect, url_for, session
 from werkzeug.security import generate_password_hash, check_password_hash
 import json
 
+from prophet import Prophet
+
+
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -291,6 +294,42 @@ def analyze():
 )
 
 
+@app.route('/forecast', methods=['GET', 'POST'])
+def forecast():
+    if request.method == 'POST':
+        file = request.files['file']
+        if file and file.filename.endswith('.xlsx'):
+            df = pd.read_excel(file)
+
+            # Make sure correct columns exist
+            if 'Date' not in df.columns or 'Amount' not in df.columns:
+                return "Excel must contain 'Date' and 'Amount' columns."
+
+            # Prepare Data
+            df = df[['Date', 'Amount']]
+            df.columns = ['ds', 'y']
+            df['ds'] = pd.to_datetime(df['ds'])
+
+            # Forecast
+            model = Prophet()
+            model.fit(df)
+            future = model.make_future_dataframe(periods=30)
+            forecast = model.predict(future)
+
+            # Plot
+            fig = model.plot(forecast)
+            forecast_chart = os.path.join('static', 'forecast.png')
+            fig.savefig(forecast_chart)
+
+            return render_template("forecast.html", forecast_chart='forecast.png')  # ✅ only the filename
+
+        else:
+            return "Please upload a valid .xlsx file."
+
+    return render_template("forecast.html", forecast_chart=None)
+
+
+
    
 
 # ⬇️ Paste your /download_report route right here
@@ -350,7 +389,6 @@ def download_report():
 
     c.save()
     return redirect(f"/{filename}")
-
 
 
 
