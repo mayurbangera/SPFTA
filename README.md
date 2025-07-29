@@ -26,9 +26,23 @@ You can upload your bank statements or Excel files and get charts, insights, and
 
 ---
 
-## 📸 Screenshot
+## 📸 Screenshots
 
-*(Add screenshot later)*
+Here are some sample screens from the app:
+
+![Screenshot 52](https://github.com/mayurbangera/SPFTA/blob/main/Screenshot%20(52).png)
+
+
+![Screenshot 53](https://github.com/mayurbangera/SPFTA/blob/main/Screenshot%20(53).png)
+
+
+![Screenshot 54](https://github.com/mayurbangera/SPFTA/blob/main/Screenshot%20(54).png)
+
+
+![Screenshot 55](https://github.com/mayurbangera/SPFTA/blob/main/Screenshot%20(55).png)
+
+
+
 
 ---
 
